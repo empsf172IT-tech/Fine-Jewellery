@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Icon — Fine Jewelry & Luxury Watches. Discover our signature collection of handcrafted timepieces and precious jewelry. Swiss-inspired precision. Ethically sourced stones. Crafted since 1987." />
+  <meta name="keywords"
+    content="luxury watches, fine jewelry, diamond rings, Swiss watches, bespoke jewelry, platinum, gold jewelry" />
+  <title>Icon — Fine Jewelry &amp; Luxury Watches</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS 3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Montserrat', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            champagne: {
+              50: '#fdf9f0',
+              100: '#faf0d7',
+              200: '#f3d89b',
+              300: '#ecbf5f',
+              400: '#e5a62e',
+              500: '#c8891a',
+              600: '#a06c12',
+              700: '#7c510d',
+              800: '#5e3d0a',
+              900: '#462d07',
+            },
+            obsidian: {
+              50: '#f4f4f5',
+              100: '#e4e4e7',
+              200: '#c8c8cc',
+              300: '#a0a0a8',
+              400: '#6b6b74',
+              500: '#3f3f46',
+              600: '#2d2d33',
+              700: '#1f1f24',
+              800: '#141418',
+              900: '#0a0a0d',
+              950: '#050507',
+            },
+            ivory: {
+              50: '#fdfcf8',
+              100: '#faf7ef',
+              200: '#f4edd9',
+              300: '#ecdfc0',
+              400: '#e2cda0',
+              500: '#d4b87e',
+            }
+          },
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --gold: #c8891a;
+      --gold-light: #e5a62e;
+      --gold-pale: #f3d89b;
+      --obsidian: #0a0a0d;
+      --charcoal: #1f1f24;
+      --graphite: #3f3f46;
+      --ivory: #faf7ef;
+      --ivory-warm: #fdf9f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+    }
+
+    body.light {
+      background-color: var(--ivory-warm);
+      color: var(--charcoal);
+    }
+
+    body.dark {
+      background-color: var(--obsidian);
+      color: var(--ivory);
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% center;
+      }
+
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes lineGrow {
+      from {
+        transform: scaleY(0);
+      }
+
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .gold-text {
+      background: linear-gradient(90deg, #c8891a 0%, #e5a62e 30%, #f3d89b 50%, #e5a62e 70%, #c8891a 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .gold-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .gold-line-v {
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--gold), transparent);
+    }
+
+    /* Nav */
+    #navbar {
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    #navbar.scrolled {
+      background-color: rgba(10, 10, 13, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(200, 137, 26, 0.15);
+    }
+
+    body.light #navbar.scrolled {
+      background-color: rgba(250, 247, 239, 0.94);
+    }
+
+    .nav-link {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.35s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--gold) !important;
+    }
+
+    .mob-link {
+      transition: color 0.3s;
+    }
+
+    .mob-link.active {
+      color: var(--gold) !important;
+    }
+
+    #mobile-menu {
+      transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
+    }
+
+    #mobile-menu.closed {
+      transform: translateX(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #mobile-menu.open {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s ease;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-gold::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .btn-gold:hover::before {
+      transform: scaleX(1);
+    }
+
+    .btn-gold:hover {
+      color: var(--obsidian);
+    }
+
+    .btn-gold span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-ghost {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.85);
+      background: transparent;
+      transition: border-color 0.3s, color 0.3s;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.7);
+      color: #fff;
+    }
+
+    /* Product cards */
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .product-card .card-img {
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .product-card:hover .card-img {
+      transform: scale(1.06);
+    }
+
+    .card-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 13, 0.85) 0%, rgba(10, 10, 13, 0.2) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .product-card:hover .card-hover-overlay {
+      opacity: 1;
+    }
+
+    .card-hover-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .product-card:hover .card-hover-info {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Gallery hover */
+    .gal-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gal-item img {
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gal-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gal-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 13, 0.82) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem;
+    }
+
+    .gal-item:hover .gal-overlay {
+      opacity: 1;
+    }
+
+    /* Spec tabs */
+    .spec-tab {
+      cursor: pointer;
+      transition: color 0.3s, border-color 0.3s;
+      padding-bottom: 0.75rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .spec-tab.active {
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .spec-panel {
+      display: none;
+    }
+
+    .spec-panel.active {
+      display: block;
+    }
+
+    /* Filter */
+    .filter-btn {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0.5rem 1.4rem;
+      border: 1px solid currentColor;
+      transition: all 0.3s;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      opacity: 1;
+    }
+
+    .filter-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--obsidian) !important;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.vis {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-l {
+      opacity: 0;
+      transform: translateX(-26px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-l.vis {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-r {
+      opacity: 0;
+      transform: translateX(26px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-r.vis {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-s {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-s.vis {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .d1 {
+      transition-delay: 0.1s;
+    }
+
+    .d2 {
+      transition-delay: 0.2s;
+    }
+
+    .d3 {
+      transition-delay: 0.3s;
+    }
+
+    .d4 {
+      transition-delay: 0.4s;
+    }
+
+    .d5 {
+      transition-delay: 0.5s;
+    }
+
+    /* Back to top */
+    #btt {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold);
+      background: rgba(10, 10, 13, 0.75);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s, transform 0.4s, background 0.3s;
+      z-index: 998;
+      border-radius: 2px;
+    }
+
+    #btt.vis {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #btt:hover {
+      background: var(--gold);
+    }
+
+    #btt:hover svg {
+      stroke: var(--obsidian);
+    }
+
+    /* Theme toggle */
+    #theme-toggle {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(200, 137, 26, 0.4);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+      flex-shrink: 0;
+    }
+
+    #theme-toggle:hover {
+      border-color: var(--gold);
+      background: rgba(200, 137, 26, 0.1);
+    }
+
+    /* Timeline */
+    .tl-item {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.45rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      transition: transform 0.3s;
+    }
+
+    .tl-item:hover::before {
+      transform: scale(1.5);
+    }
+
+    /* Service card */
+    .svc-card {
+      border-top: 1px solid rgba(200, 137, 26, 0.18);
+      transition: border-color 0.3s;
+      padding-top: 1.5rem;
+    }
+
+    .svc-card:hover {
+      border-top-color: var(--gold);
+    }
+
+    /* Signature piece accent */
+    .sig-accent::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* Masonry */
+    .masonry {
+      columns: 2;
+      column-gap: 0.75rem;
+    }
+
+    @media(min-width:768px) {
+      .masonry {
+        columns: 3;
+        column-gap: 1rem;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .masonry {
+        columns: 4;
+        column-gap: 1rem;
+      }
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 0.75rem;
+    }
+
+    @media(min-width:768px) {
+      .masonry-item {
+        margin-bottom: 1rem;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(200, 137, 26, 0.35);
+      border-radius: 2px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold);
+    }
+
+    /* Label */
+    .lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    /* Hero min-height */
+    #hero {
+      min-height: 100svh;
+    }
+
+    /* newsletter input */
+    .nl-input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(200, 137, 26, 0.3);
+      outline: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      color: var(--ivory);
+      padding: 0.5rem 0;
+      transition: border-color 0.3s;
+      width: 100%;
+    }
+
+    .nl-input:focus {
+      border-bottom-color: var(--gold);
+    }
+
+    body.light .nl-input {
+      color: var(--charcoal);
+    }
+
+    /* Gold corner */
+    .corner-tl {
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      width: 60px;
+      height: 60px;
+      border-top: 1px solid rgba(200, 137, 26, 0.5);
+      border-left: 1px solid rgba(200, 137, 26, 0.5);
+      pointer-events: none;
+    }
+
+    .corner-br {
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      width: 60px;
+      height: 60px;
+      border-bottom: 1px solid rgba(200, 137, 26, 0.5);
+      border-right: 1px solid rgba(200, 137, 26, 0.5);
+      pointer-events: none;
+    }
+
+    /* Section bg helpers */
+    .bg-dark-a {
+      background-color: #0a0a0d;
+    }
+
+    .bg-dark-b {
+      background-color: #141418;
+    }
+
+    .bg-dark-c {
+      background-color: #1f1f24;
+    }
+
+    body.light .bg-dark-a {
+      background-color: #fdf9f0;
+    }
+
+    body.light .bg-dark-b {
+      background-color: #faf7ef;
+    }
+
+    body.light .bg-dark-c {
+      background-color: #f4edd9;
+    }
+
+    .text-primary {
+      color: var(--ivory);
+    }
+
+    body.light .text-primary {
+      color: var(--charcoal);
+    }
+
+    .text-secondary {
+      color: rgba(250, 247, 239, 0.6);
+    }
+
+    body.light .text-secondary {
+      color: rgba(31, 31, 36, 0.6);
+    }
+
+    .text-muted {
+      color: rgba(250, 247, 239, 0.35);
+    }
+
+    body.light .text-muted {
+      color: rgba(31, 31, 36, 0.4);
+    }
+
+    .border-subtle {
+      border-color: rgba(200, 137, 26, 0.15);
+    }
+
+    body.light .border-subtle {
+      border-color: rgba(200, 137, 26, 0.25);
+    }
+
+    .card-bg {
+      background: rgba(31, 31, 36, 0.8);
+      border: 1px solid rgba(200, 137, 26, 0.12);
+    }
+
+    body.light .card-bg {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(200, 137, 26, 0.2);
+    }
+
+    .nav-text {
+      color: rgba(250, 247, 239, 0.75);
+    }
+
+    body.light #navbar.scrolled .nav-text {
+      color: rgba(31, 31, 36, 0.75);
+    }
+
+    .nav-text:hover {
+      color: #e5a62e;
+    }
+
+    /* Footer classes */
+    .footer-bg {
+      background-color: #050507;
+    }
+
+    body.light .footer-bg {
+      background-color: #f4edd9;
+    }
+
+    .footer-text {
+      color: rgba(250, 247, 239, 0.65);
+    }
+
+    body.light .footer-text {
+      color: rgba(31, 31, 36, 0.6);
+    }
+
+    .footer-text-dim {
+      color: rgba(250, 247, 239, 0.5);
+    }
+
+    body.light .footer-text-dim {
+      color: rgba(31, 31, 36, 0.4);
+    }
+
+    .footer-link {
+      color: rgba(250, 247, 239, 0.65);
+      transition: color 0.3s;
+    }
+
+    body.light .footer-link {
+      color: rgba(31, 31, 36, 0.6);
+    }
+
+    .footer-link:hover {
+      color: #e5a62e;
+    }
+
+    body.light .footer-link:hover {
+      color: #c8891a;
+    }
+
+    .social-link {
+      color: rgba(250, 247, 239, 0.65);
+      transition: color 0.3s;
+    }
+
+    body.light .social-link {
+      color: rgba(31, 31, 36, 0.5);
+    }
+
+    .social-link:hover {
+      color: #e5a62e;
+    }
+
+    body.light .social-link:hover {
+      color: #c8891a;
+    }
+  </style>
+</head>
+
+<body class="dark" id="body-root">
+
+  <!-- ============================================================ NAVIGATION -->
+  <nav id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 lg:px-16 py-5 flex items-center justify-between">
+    <a href="#hero" class="flex-shrink-0 flex items-center gap-3 group">
+      <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-700 group-hover:rotate-[180deg]">
+        <circle cx="20" cy="20" r="18" stroke="#ecbf5f" stroke-width="1.2" opacity="0.6"/>
+        <circle cx="20" cy="20" r="14" stroke="#ecbf5f" stroke-width="0.8" opacity="0.3"/>
+        <path d="M16 12H24" stroke="#ecbf5f" stroke-width="1.5"/>
+        <path d="M20 12V28" stroke="#ecbf5f" stroke-width="1.5"/>
+        <path d="M16 28H24" stroke="#ecbf5f" stroke-width="1.5"/>
+        <path d="M20 5L22 7L20 9L18 7L20 5Z" fill="#ecbf5f"/>
+      </svg>
+      <div>
+        <span
+          style="font-family:'Playfair Display',serif; font-size:1.6rem; letter-spacing:0.15em; color:#ecbf5f; line-height:1;">ICON</span>
+        <div class="gold-line mt-1 w-full"></div>
+      </div>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#hero" class="nav-link nav-text">Home</a>
+      <a href="#collection" class="nav-link nav-text">Collection</a>
+      <a href="#craftsmanship" class="nav-link nav-text">Craftsmanship</a>
+      <a href="#watches" class="nav-link nav-text">Watches</a>
+      <a href="#jewelry" class="nav-link nav-text">Jewelry</a>
+      <a href="#signature" class="nav-link nav-text">Signature</a>
+      <a href="#private-client" class="nav-link nav-text">Private Client</a>
+      <a href="#portfolio" class="nav-link nav-text">Portfolio</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button id="theme-toggle" aria-label="Toggle theme">
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="#c8891a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="#c8891a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="block">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+      </button>
+      <a href="login.html" class="hidden md:inline-flex btn-gold items-center"><span>Enquire</span></a>
+      <button id="menu-toggle" class="lg:hidden flex flex-col gap-[5px] p-1" aria-label="Open menu">
+        <span class="w-6 h-px bg-champagne-300 block transition-all"></span>
+        <span class="w-4 h-px bg-champagne-300 block transition-all"></span>
+        <span class="w-6 h-px bg-champagne-300 block transition-all"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="closed fixed top-0 right-0 h-full w-80 z-[999] flex flex-col justify-between p-8 pt-24"
+    style="background:rgba(10,10,13,0.97);backdrop-filter:blur(24px);border-left:1px solid rgba(200,137,26,0.15);">
+    <button id="menu-close" class="absolute top-6 right-6" style="color:#ecbf5f;" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <div class="flex flex-col gap-6">
+      <div class="gold-line w-12 mb-2"></div>
+      <a href="#hero" class="mob-link"
+        style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#faf7ef;">Home</a>
+      <a href="#collection" class="mob-link"
+        style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#faf7ef;">Collection</a>
+      <a href="#craftsmanship" class="mob-link"
+        style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#faf7ef;">Craftsmanship</a>
+      <a href="#watches" class="mob-link"
+        style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#faf7ef;">Watches</a>
+      <a href="#jewelry" class="mob-link"
+        style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#faf7ef;">Jewelry</a>
+      <a href="#signature" class="mob-link"
+        style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#faf7ef;">Signature</a>
+      <a href="#private-client" class="mob-link"
+        style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#faf7ef;">Private Client</a>
+      <a href="#portfolio" class="mob-link"
+        style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#faf7ef;">Portfolio</a>
+    </div>
+    <div class="space-y-4">
+      <div class="gold-line w-12"></div>
+      <a href="#private-client" class="btn-gold block text-center"><span>Request Consultation</span></a>
+      <p class="lbl mt-2" style="color:rgba(200,137,26,0.5);">Crafted Since 1987</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ SECTION 01 — HERO -->
+  <section id="hero" class="relative flex items-end pb-16 md:pb-24 overflow-hidden bg-dark-a">
+    <div class="absolute inset-0">
+      <img id="hero-img" src="images/hero_watch.jpg" alt="Icon luxury chronograph"
+        class="w-full h-full object-cover object-center" style="transform-origin:center;" />
+      <div class="absolute inset-0"
+        style="background:linear-gradient(135deg,rgba(10,10,13,0.82) 0%,rgba(10,10,13,0.45) 55%,rgba(10,10,13,0.25) 100%);">
+      </div>
+      <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,10,13,0.95) 0%,transparent 55%);">
+      </div>
+    </div>
+
+    <div class="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="max-w-3xl">
+        <div class="reveal flex items-center gap-4 mb-6">
+          <div class="w-8 h-px" style="background:var(--gold-light);"></div>
+          <span class="lbl" style="color:var(--gold-light);">Fine Jewelry &amp; Luxury Watches</span>
+        </div>
+        <h1 class="reveal d1"
+          style="font-family:'Playfair Display',serif;font-size:clamp(3rem,9vw,6.5rem);color:#faf7ef;line-height:0.9;margin-bottom:1.5rem;">
+          Time Carved <em class="gold-text not-italic">Into Eternity.</em>
+        </h1>
+        <p class="reveal d2"
+          style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:rgba(250,247,239,0.65);margin-bottom:2rem;max-width:28rem;line-height:1.7;font-style:italic;">
+          Where Swiss precision meets the artistry of fine jewellery — each piece a testament to enduring craftsmanship.
+        </p>
+        <div class="reveal d3 flex flex-wrap gap-4 mb-10">
+          <a href="#collection" class="btn-gold"><span>Explore Collection</span></a>
+          <a href="#portfolio" class="btn-ghost">View Portfolio</a>
+        </div>
+        <div class="reveal d4 flex flex-wrap gap-6 md:gap-10">
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="3" />
+              <line x1="12" y1="2" x2="12" y2="5" />
+              <line x1="12" y1="19" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="5" y2="12" />
+              <line x1="19" y1="12" x2="22" y2="12" />
+            </svg>
+            <span class="lbl text-muted">Crafted Since 1987</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3L2 9l10 12L22 9l-4-6H6z" />
+              <line x1="2" y1="9" x2="22" y2="9" />
+            </svg>
+            <span class="lbl text-muted">Limited Editions</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+            <span class="lbl text-muted">Swiss-Inspired Precision</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 right-8 flex flex-col items-center gap-3">
+      <span class="lbl text-muted" style="writing-mode:vertical-rl;">Scroll</span>
+      <div class="w-px h-12"
+        style="background:linear-gradient(to bottom,transparent,var(--gold));animation:pulse 2s infinite;"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SECTION 02 — SIGNATURE COLLECTION -->
+  <section id="collection" class="py-24 md:py-32 px-6 md:px-12 lg:px-20 xl:px-24 bg-dark-a">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+        <div class="reveal">
+          <span class="lbl mb-4 block" style="color:var(--gold);">02 — Signature Collection</span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);"
+            class="text-primary leading-tight">The Collection <em class="italic">2026</em></h2>
+        </div>
+        <div class="reveal d2 max-w-xs">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.7;" class="text-secondary">
+            Each piece emerges from a philosophy of perfection — where time and gemstone converge in singular form.</p>
+        </div>
+      </div>
+      <div class="gold-line mb-16 reveal"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        <!-- Card 1 — hero wide -->
+        <div class="product-card sm:col-span-2 lg:col-span-2 reveal d1" style="aspect-ratio:16/10;background:#141418;">
+          <img src="https://images.pexels.com/photos/10688098/pexels-photo-10688098.png" alt="Aurelia Chronograph"
+            class="card-img w-full h-full object-cover object-top" />
+          <div class="card-hover-overlay"></div>
+          <div class="card-hover-info">
+            <span class="lbl mb-1 block" style="color:var(--gold-light);">Timepiece</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#faf7ef;">Aurelia Chronograph</h3>
+            <p
+              style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:rgba(250,247,239,0.6);margin-top:0.25rem;">
+              18k Yellow Gold · Mechanical Movement</p>
+            <span class="lbl mt-2 block" style="color:var(--gold);font-size:0.6rem;">Private Enquiry</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 md:hidden"
+            style="background:linear-gradient(to top,rgba(10,10,13,0.9),transparent);">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#faf7ef;">Aurelia Chronograph</h3>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="product-card reveal d2" style="aspect-ratio:3/4;min-height:300px;background:#141418;">
+          <img src="https://images.pexels.com/photos/31367643/pexels-photo-31367643.jpeg" alt="Celeste Solitaire"
+            class="card-img w-full h-full object-cover" />
+          <div class="card-hover-overlay"></div>
+          <div class="card-hover-info">
+            <span class="lbl mb-1 block" style="color:var(--gold-light);">Fine Jewelry</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#faf7ef;">Celeste Solitaire</h3>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:rgba(250,247,239,0.6);">2.4ct VS1
+              Diamond · Platinum</p>
+            <span class="lbl mt-2 block" style="color:var(--gold);font-size:0.6rem;">Private Enquiry</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 md:hidden"
+            style="background:linear-gradient(to top,rgba(10,10,13,0.9),transparent);">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#faf7ef;">Celeste Solitaire</h3>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="product-card reveal d1" style="aspect-ratio:3/4;min-height:300px;background:#141418;">
+          <img src="https://images.pexels.com/photos/16562986/pexels-photo-16562986.jpeg" alt="Élan Diamond Timepiece"
+            class="card-img w-full h-full object-cover" />
+          <div class="card-hover-overlay"></div>
+          <div class="card-hover-info">
+            <span class="lbl mb-1 block" style="color:var(--gold-light);">Timepiece</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#faf7ef;">Élan Diamond</h3>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:rgba(250,247,239,0.6);">Rose Gold ·
+              Alligator Strap</p>
+            <span class="lbl mt-2 block" style="color:var(--gold);font-size:0.6rem;">Private Enquiry</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 md:hidden"
+            style="background:linear-gradient(to top,rgba(10,10,13,0.9),transparent);">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#faf7ef;">Élan Diamond</h3>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="product-card reveal d2" style="aspect-ratio:3/4;min-height:300px;background:#141418;">
+          <img src="https://images.pexels.com/photos/17833830/pexels-photo-17833830.jpeg" alt="Nocturne Pendant"
+            class="card-img w-full h-full object-cover" />
+          <div class="card-hover-overlay"></div>
+          <div class="card-hover-info">
+            <span class="lbl mb-1 block" style="color:var(--gold-light);">Fine Jewelry</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#faf7ef;">Nocturne Pendant</h3>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:rgba(250,247,239,0.6);">18k Gold ·
+              Pear Diamond</p>
+            <span class="lbl mt-2 block" style="color:var(--gold);font-size:0.6rem;">Private Enquiry</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 md:hidden"
+            style="background:linear-gradient(to top,rgba(10,10,13,0.9),transparent);">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#faf7ef;">Nocturne Pendant</h3>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="product-card reveal d3" style="aspect-ratio:3/4;min-height:300px;background:#141418;">
+          <img src="https://images.pexels.com/photos/36609219/pexels-photo-36609219.jpeg" alt="Icon Pearl Strand"
+            class="card-img w-full h-full object-cover object-center" />
+          <div class="card-hover-overlay"></div>
+          <div class="card-hover-info">
+            <span class="lbl mb-1 block" style="color:var(--gold-light);">Fine Jewelry</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#faf7ef;">Icon Pearl Strand</h3>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:rgba(250,247,239,0.6);">South Sea
+              Pearls · 18k Gold Clasp</p>
+            <span class="lbl mt-2 block" style="color:var(--gold);font-size:0.6rem;">Private Enquiry</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 md:hidden"
+            style="background:linear-gradient(to top,rgba(10,10,13,0.9),transparent);">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#faf7ef;">Icon Pearl Strand</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-16 reveal">
+        <a href="#jewelry" class="btn-gold"><span>View Full Collection</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SECTION 03 — CRAFTSMANSHIP -->
+  <section id="craftsmanship" class="py-24 md:py-32 bg-dark-b overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal-l relative">
+          <div class="overflow-hidden" style="aspect-ratio:3/4;">
+            <img src="https://images.pexels.com/photos/33748058/pexels-photo-33748058.jpeg" alt="Master jeweler at work"
+              class="w-full h-full object-cover transition-transform duration-[1.2s] hover:scale-105" />
+          </div>
+          <div class="absolute -bottom-5 -right-0 md:-right-6 p-6 card-bg">
+            <p class="gold-text mb-1" style="font-family:'Playfair Display',serif;font-size:2.5rem;">287</p>
+            <p class="lbl text-muted" style="font-size:0.6rem;line-height:1.5;">Hand-finished<br />Components</p>
+          </div>
+        </div>
+        <div class="space-y-8">
+          <div class="reveal">
+            <span class="lbl mb-5 block" style="color:var(--gold);">03 — The Art of Craftsmanship</span>
+            <h2 class="text-primary leading-tight mb-6"
+              style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);">
+              Perfection is a <em class="italic gold-text">Process.</em>
+            </h2>
+            <p class="text-secondary leading-relaxed mb-4"
+              style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Every piece from Icon begins not as an
+              object, but as an intention — a vision held with conviction until the metal yields, the stone speaks, and
+              the movement breathes.</p>
+            <p class="text-muted leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:1rem;">Our
+              artisans combine centuries-old techniques with modern engineering precision, ensuring each timepiece
+              surpasses the demands of both wear and wonder.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-px reveal d2" style="background:rgba(200,137,26,0.08);">
+            <div class="p-5 space-y-2 bg-dark-b">
+              <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="#c8891a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4l3 3" />
+                </svg><span class="lbl" style="color:var(--gold);font-size:0.6rem;">Precision Movement</span></div>
+              <p class="text-muted" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">Calibrated to ±2
+                seconds per day.</p>
+            </div>
+            <div class="p-5 space-y-2 bg-dark-b">
+              <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="#c8891a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 3L2 9l10 12L22 9l-4-6H6z" />
+                  <line x1="2" y1="9" x2="22" y2="9" />
+                </svg><span class="lbl" style="color:var(--gold);font-size:0.6rem;">Ethically Sourced</span></div>
+              <p class="text-muted" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">All gemstones
+                certified conflict-free.</p>
+            </div>
+            <div class="p-5 space-y-2 bg-dark-b">
+              <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="#c8891a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" />
+                  <path d="M7 11V7a5 5 0 0110 0v4" />
+                </svg><span class="lbl" style="color:var(--gold);font-size:0.6rem;">14 QA Stages</span></div>
+              <p class="text-muted" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">Multi-stage quality
+                inspection process.</p>
+            </div>
+            <div class="p-5 space-y-2 bg-dark-b">
+              <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="#c8891a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg><span class="lbl" style="color:var(--gold);font-size:0.6rem;">Fine Metal Finishing</span></div>
+              <p class="text-muted" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">Brushed, polished,
+                and engraved by hand.</p>
+            </div>
+          </div>
+          <div class="flex gap-10 reveal d3">
+            <div>
+              <p class="gold-text" style="font-family:'Playfair Display',serif;font-size:2rem;">39<span
+                  style="font-size:1rem;"> yrs</span></p><span class="lbl text-muted" style="font-size:0.6rem;">In
+                Craft</span>
+            </div>
+            <div>
+              <p class="gold-text" style="font-family:'Playfair Display',serif;font-size:2rem;">12</p><span
+                class="lbl text-muted" style="font-size:0.6rem;">Master Artisans</span>
+            </div>
+            <div>
+              <p class="gold-text" style="font-family:'Playfair Display',serif;font-size:2rem;">3</p><span
+                class="lbl text-muted" style="font-size:0.6rem;">Global Ateliers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote band -->
+      <div class="mt-24 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <div class="lg:col-span-2 reveal-s">
+          <div class="overflow-hidden relative" style="aspect-ratio:16/7;">
+            <img src="https://images.pexels.com/photos/9421380/pexels-photo-9421380.jpeg" alt="Macro gemstone close-up"
+              class="w-full h-full object-cover transition-transform duration-[1.5s] hover:scale-105" />
+            <div class="absolute inset-0"
+              style="background:linear-gradient(to right,rgba(10,10,13,0.6) 0%,transparent 60%);"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 left-8">
+              <p
+                style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#faf7ef;font-style:italic;max-width:260px;">
+                "Where science becomes soul."</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal d2 space-y-4">
+          <div class="gold-line w-10"></div>
+          <p class="text-secondary leading-relaxed italic"
+            style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">The finest jewelry is not made — it is
+            revealed, stone by stone, in hands that know no shortcut.</p>
+          <span class="lbl block" style="color:var(--gold);font-size:0.6rem;">— Henri Icon, Founder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SECTION 04 — WATCH ATELIER -->
+  <section id="watches" class="py-24 md:py-32 bg-dark-a overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="reveal mb-16">
+        <span class="lbl mb-4 block" style="color:var(--gold);">04 — Watch Atelier</span>
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <h2 class="text-primary leading-tight"
+            style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);">The Imperial <em
+              class="italic">Heritage I</em></h2>
+          <span class="hidden md:inline lbl px-4 py-1.5 border"
+            style="color:var(--gold);border-color:rgba(200,137,26,0.4);font-size:0.6rem;">Limited Edition — No.
+            47/150</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <!-- Watch image -->
+        <div class="reveal-l relative">
+          <div class="overflow-hidden" style="aspect-ratio:3/4;background:#141418;">
+            <img src="images/heritage_watch.jpg" alt="Imperial Heritage I"
+              class="w-full h-full object-cover object-top transition-transform duration-[1.5s] hover:scale-105" />
+          </div>
+          <div class="corner-tl"></div>
+          <div class="corner-br"></div>
+          <div class="md:hidden absolute top-4 right-4">
+            <span class="lbl px-3 py-1.5"
+              style="color:var(--gold);background:rgba(10,10,13,0.8);border:1px solid rgba(200,137,26,0.4);font-size:0.55rem;">Limited
+              — 47/150</span>
+          </div>
+        </div>
+
+        <!-- Specs -->
+        <div class="space-y-8">
+          <!-- Tabs -->
+          <div class="reveal flex gap-0 border-b" style="border-color:rgba(200,137,26,0.15);">
+            <button class="spec-tab active text-champagne-500 mr-6" data-tab="ov">Overview</button>
+            <button class="spec-tab text-muted mr-6" data-tab="mv">Movement</button>
+            <button class="spec-tab text-muted" data-tab="mt">Materials</button>
+          </div>
+
+          <div id="panel-ov" class="spec-panel active space-y-5 reveal d1">
+            <p class="text-secondary leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">
+              The Imperial Heritage I is Icon's most distinguished dress watch — a tribute to grand European horology,
+              reinterpreted for the modern age.</p>
+            <div class="grid grid-cols-2 gap-px" style="background:rgba(200,137,26,0.08);">
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Case
+                  Diameter</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">39 mm</p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Case
+                  Material</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Platinum 950
+                </p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Water
+                  Resistance</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">30m / 3 ATM</p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1"
+                  style="font-size:0.58rem;">Crystal</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Sapphire AR</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="panel-mv" class="spec-panel space-y-5">
+            <div class="grid grid-cols-2 gap-px" style="background:rgba(200,137,26,0.08);">
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1"
+                  style="font-size:0.58rem;">Calibre</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">MA-9140</p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Type</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Mechanical,
+                  Manual</p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Power
+                  Reserve</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">72 Hours</p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1"
+                  style="font-size:0.58rem;">Frequency</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">21,600 vph</p>
+              </div>
+              <div class="col-span-2 p-4 bg-dark-a"><span class="lbl text-muted block mb-1"
+                  style="font-size:0.58rem;">Finishing</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Côtes de Genève
+                  · Perlage · Bevelled Anglage</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="panel-mt" class="spec-panel space-y-5">
+            <div class="grid grid-cols-2 gap-px" style="background:rgba(200,137,26,0.08);">
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Case</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Platinum 950
+                </p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Dial</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Guilloché Bleu
+                  Nuit</p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Strap</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Navy Alligator
+                  Leather</p>
+              </div>
+              <div class="p-4 bg-dark-a"><span class="lbl text-muted block mb-1"
+                  style="font-size:0.58rem;">Buckle</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Platinum
+                  Deployment</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 360 explore -->
+          <div class="reveal d2">
+            <div id="explore-360" class="border p-5 cursor-pointer group transition-colors"
+              style="border-color:rgba(200,137,26,0.2);">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-10 h-10 border flex items-center justify-center group-hover:border-champagne-400 transition-colors"
+                    style="border-color:rgba(200,137,26,0.35);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="3" />
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 8v-1M12 17v-1M8 12h-1M17 12h-1" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="lbl mb-0.5" style="color:var(--gold);font-size:0.6rem;">360° Explore Details</p>
+                    <p class="text-muted" style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;">Click to
+                      reveal every angle</p>
+                  </div>
+                </div>
+                <svg id="arrow-360" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8891a"
+                  stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"
+                  class="transition-transform group-hover:translate-x-1">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </div>
+              <div id="detail-360" class="mt-4 hidden">
+                <div class="grid grid-cols-3 gap-2">
+                  <img src="images/heritage_watch.jpg" alt="Front view"
+                    class="aspect-square object-cover object-top opacity-80 hover:opacity-100 transition-opacity" />
+                  <img src="images/watch_chronograph.jpg" alt="Dial view"
+                    class="aspect-square object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                  <img src="images/hero_watch.jpg" alt="Movement view"
+                    class="aspect-square object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                </div>
+                <p class="lbl mt-3 text-muted" style="font-size:0.58rem;">Hover to explore each angle</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal d3">
+            <a href="#private-client" class="btn-gold"><span>Request Private Viewing</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SECTION 05 — FINE JEWELRY EDIT -->
+  <section id="jewelry" class="py-24 md:py-32 bg-dark-c overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
+        <div class="reveal">
+          <span class="lbl mb-4 block" style="color:var(--gold);">05 — Fine Jewelry Edit</span>
+          <h2 class="text-primary leading-tight"
+            style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);">The Jewelry <em
+              class="italic">Atelier</em></h2>
+        </div>
+        <div class="reveal d1 flex flex-wrap gap-2" id="jewelry-filters">
+          <button class="filter-btn active text-primary" data-jf="all">All</button>
+          <button class="filter-btn text-primary" data-jf="rings">Rings</button>
+          <button class="filter-btn text-primary" data-jf="necklaces">Necklaces</button>
+          <button class="filter-btn text-primary" data-jf="bracelets">Bracelets</button>
+          <button class="filter-btn text-primary" data-jf="diamonds">Diamonds</button>
+        </div>
+      </div>
+      <div class="gold-line mb-12 reveal"></div>
+
+      <div class="masonry" id="jewelry-masonry">
+        <div class="masonry-item gal-item" data-jcat="rings">
+          <div class="relative" style="aspect-ratio:3/4;">
+            <img src="images/diamond_ring.jpg" alt="Celeste Solitaire" class="w-full h-full object-cover" />
+            <div class="gal-overlay"><span class="lbl mb-1 block"
+                style="color:var(--gold-light);font-size:0.58rem;">Rings</span>
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;color:#faf7ef;">Celeste Solitaire</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:rgba(250,247,239,0.6);">Platinum
+                · VS1</p>
+            </div>
+          </div>
+        </div>
+        <div class="masonry-item gal-item" data-jcat="necklaces">
+          <div class="relative" style="aspect-ratio:2/3;">
+            <img src="images/gold_necklace.jpg" alt="Nocturne Pendant" class="w-full h-full object-cover" />
+            <div class="gal-overlay"><span class="lbl mb-1 block"
+                style="color:var(--gold-light);font-size:0.58rem;">Necklaces</span>
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;color:#faf7ef;">Nocturne Pendant</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:rgba(250,247,239,0.6);">18k Gold
+                · Diamond</p>
+            </div>
+          </div>
+        </div>
+        <div class="masonry-item gal-item" data-jcat="bracelets">
+          <div class="relative" style="aspect-ratio:1/1;">
+            <img src="images/pearl_bracelet.jpg" alt="Icon Pearl" class="w-full h-full object-cover" />
+            <div class="gal-overlay"><span class="lbl mb-1 block"
+                style="color:var(--gold-light);font-size:0.58rem;">Bracelets</span>
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;color:#faf7ef;">Icon Pearl</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:rgba(250,247,239,0.6);">South Sea
+                Pearls</p>
+            </div>
+          </div>
+        </div>
+        <div class="masonry-item gal-item" data-jcat="diamonds">
+          <div class="relative" style="aspect-ratio:3/2;">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=85" alt="Aurora Halo"
+              class="w-full h-full object-cover" />
+            <div class="gal-overlay"><span class="lbl mb-1 block"
+                style="color:var(--gold-light);font-size:0.58rem;">Diamonds</span>
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;color:#faf7ef;">Aurora Halo</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:rgba(250,247,239,0.6);">18k White
+                Gold</p>
+            </div>
+          </div>
+        </div>
+        <div class="masonry-item gal-item" data-jcat="rings">
+          <div class="relative" style="aspect-ratio:2/3;">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=85" alt="Imperial Ring"
+              class="w-full h-full object-cover" />
+            <div class="gal-overlay"><span class="lbl mb-1 block"
+                style="color:var(--gold-light);font-size:0.58rem;">Rings</span>
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;color:#faf7ef;">Imperial Heritage</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:rgba(250,247,239,0.6);">22k Gold
+                · Ruby</p>
+            </div>
+          </div>
+        </div>
+        <div class="masonry-item gal-item" data-jcat="necklaces">
+          <div class="relative" style="aspect-ratio:3/4;">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=85" alt="Lumière Collar"
+              class="w-full h-full object-cover" />
+            <div class="gal-overlay"><span class="lbl mb-1 block"
+                style="color:var(--gold-light);font-size:0.58rem;">Necklaces</span>
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;color:#faf7ef;">Lumière Collar</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:rgba(250,247,239,0.6);">Platinum
+                · Pavé</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center reveal">
+        <a href="#private-client" class="btn-gold"><span>Request Private Viewing</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SECTION 06 — SIGNATURE PIECES -->
+  <section id="signature" class="py-24 md:py-32 bg-dark-a">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="reveal mb-16 text-center">
+        <span class="lbl mb-4 inline-block" style="color:var(--gold);">06 — The Signature Pieces</span>
+        <h2 class="text-primary leading-tight mx-auto"
+          style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);">Icons of <em
+            class="italic">Icon</em></h2>
+      </div>
+
+      <div class="space-y-24 md:space-y-28">
+        <!-- Piece 1 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="reveal-l relative">
+            <div class="overflow-hidden" style="aspect-ratio:3/4;background:#141418;"><img
+                src="images/watch_chronograph.jpg" alt="Élan Diamond Timepiece"
+                class="w-full h-full object-cover transition-transform duration-[1.2s] hover:scale-105" /></div>
+            <div class="corner-tl"></div>
+          </div>
+          <div class="space-y-5 reveal-r">
+            <span class="lbl block" style="color:var(--gold);font-size:0.58rem;">Signature Timepiece · No. I</span>
+            <h3 class="text-primary leading-tight" style="font-family:'Playfair Display',serif;font-size:2rem;">Élan
+              Diamond<br />Timepiece</h3>
+            <div class="gold-line w-12"></div>
+            <p class="text-secondary leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">
+              Born of a singular obsession with luminosity, the Élan Diamond was conceived to capture the precise moment
+              when light becomes time — frozen forever within rose gold and glass.</p>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 rounded-full" style="background:var(--gold);"></div><span class="text-muted"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-style:italic;">Limited to 24 pieces
+                worldwide</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 card-bg">
+              <div class="flex-1"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Case</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;">Rose Gold · 18k</p>
+              </div>
+              <div class="gold-line-v h-10"></div>
+              <div class="flex-1"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Movement</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;">Manual Wind · 65h</p>
+              </div>
+            </div>
+            <a href="#private-client" class="btn-gold"><span>Discover Piece</span></a>
+          </div>
+        </div>
+
+        <!-- Piece 2 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="order-2 lg:order-1 space-y-5 reveal-l">
+            <span class="lbl block" style="color:var(--gold);font-size:0.58rem;">Signature Jewelry · No. II</span>
+            <h3 class="text-primary leading-tight" style="font-family:'Playfair Display',serif;font-size:2rem;">
+              Celeste<br />Solitaire</h3>
+            <div class="gold-line w-12"></div>
+            <p class="text-secondary leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">
+              The Celeste Solitaire represents the pinnacle of our diamond atelier's achievements. A 2.4-carat VS1 stone
+              — selected personally from over 800 candidates — sits at the apex of a hand-fabricated platinum crown.</p>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 rounded-full" style="background:var(--gold);"></div><span class="text-muted"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-style:italic;">One-of-a-kind
+                creation</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 card-bg">
+              <div class="flex-1"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Diamond</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;">2.4ct, VS1, D-colour</p>
+              </div>
+              <div class="gold-line-v h-10"></div>
+              <div class="flex-1"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Setting</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;">Six-Prong Platinum</p>
+              </div>
+            </div>
+            <a href="#private-client" class="btn-gold"><span>Discover Piece</span></a>
+          </div>
+          <div class="order-1 lg:order-2 reveal-r relative">
+            <div class="overflow-hidden" style="aspect-ratio:3/4;background:#0a0a0d;"><img src="images/diamond_ring.jpg"
+                alt="Celeste Solitaire"
+                class="w-full h-full object-cover transition-transform duration-[1.2s] hover:scale-105" /></div>
+            <div class="corner-br"></div>
+          </div>
+        </div>
+
+        <!-- Piece 3 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="reveal-l relative">
+            <div class="overflow-hidden" style="aspect-ratio:3/4;background:#141418;"><img
+                src="images/pearl_bracelet.jpg" alt="Icon Pearl Strand"
+                class="w-full h-full object-cover transition-transform duration-[1.2s] hover:scale-105" /></div>
+            <div class="corner-tl"></div>
+          </div>
+          <div class="space-y-5 reveal-r">
+            <span class="lbl block" style="color:var(--gold);font-size:0.58rem;">Signature Jewelry · No. III</span>
+            <h3 class="text-primary leading-tight" style="font-family:'Playfair Display',serif;font-size:2rem;">Icon
+              Pearl<br />Strand</h3>
+            <div class="gold-line w-12"></div>
+            <p class="text-secondary leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">
+              Sourced from a single family-owned pearl farm in the Coral Sea, each specimen is selected for its luster,
+              roundness, and translucence. The 18k gold clasp bears the Icon seal — a mark of provenance.</p>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 rounded-full" style="background:var(--gold);"></div><span class="text-muted"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-style:italic;">Limited to 36 strands
+                annually</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 card-bg">
+              <div class="flex-1"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Pearls</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;">South Sea, 10–12mm</p>
+              </div>
+              <div class="gold-line-v h-10"></div>
+              <div class="flex-1"><span class="lbl text-muted block mb-1" style="font-size:0.58rem;">Clasp</span>
+                <p class="text-primary" style="font-family:'Cormorant Garamond',serif;">18k Gold, Diamond-set</p>
+              </div>
+            </div>
+            <a href="#private-client" class="btn-gold"><span>Discover Piece</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SECTION 07 — PRIVATE CLIENT -->
+  <section id="private-client" class="py-24 md:py-32 bg-dark-b relative overflow-hidden">
+    <!-- Grid texture -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.025]"
+      style="background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(200,137,26,1) 39px,rgba(200,137,26,1) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(200,137,26,1) 39px,rgba(200,137,26,1) 40px);">
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="text-center mb-20 reveal">
+        <span class="lbl mb-5 block" style="color:var(--gold);">07 — Private Client Experience</span>
+        <h2 class="text-primary leading-tight mb-6"
+          style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);">An Experience <em
+            class="italic">Exclusively Yours</em></h2>
+        <p class="text-secondary max-w-xl mx-auto leading-relaxed"
+          style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">We invite our valued clients to experience
+          Icon through a curated programme of private services — designed to honour the relationship between maker and
+          wearer.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+        <!-- 6 service cards -->
+        <div class="svc-card p-6 group reveal d1">
+          <div
+            class="w-14 h-14 border flex items-center justify-center mb-5 group-hover:border-champagne-400 transition-colors"
+            style="border-color:rgba(200,137,26,0.2);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3L2 9l10 12L22 9l-4-6H6z" />
+              <line x1="2" y1="9" x2="22" y2="9" />
+              <line x1="9" y1="3" x2="6" y2="9" />
+              <line x1="15" y1="3" x2="18" y2="9" />
+              <line x1="12" y1="9" x2="12" y2="21" />
+            </svg>
+          </div>
+          <h3 class="text-primary mb-3" style="font-family:'Playfair Display',serif;font-size:1.2rem;">Private Viewing
+          </h3>
+          <p class="text-muted leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">
+            Experience our full collection in a confidential, appointment-only setting within our private salon.</p>
+        </div>
+        <div class="svc-card p-6 group reveal d2">
+          <div
+            class="w-14 h-14 border flex items-center justify-center mb-5 group-hover:border-champagne-400 transition-colors"
+            style="border-color:rgba(200,137,26,0.2);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="2 20 6 8 12 14 18 8 22 20" />
+              <line x1="2" y1="20" x2="22" y2="20" />
+              <circle cx="6" cy="8" r="1.5" fill="#c8891a" />
+              <circle cx="12" cy="14" r="1.5" fill="#c8891a" />
+              <circle cx="18" cy="8" r="1.5" fill="#c8891a" />
+            </svg>
+          </div>
+          <h3 class="text-primary mb-3" style="font-family:'Playfair Display',serif;font-size:1.2rem;">Personal Styling
+          </h3>
+          <p class="text-muted leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Our
+            style consultants offer curated selections aligned to your wardrobe, occasions, and aesthetic.</p>
+        </div>
+        <div class="svc-card p-6 group reveal d3">
+          <div
+            class="w-14 h-14 border flex items-center justify-center mb-5 group-hover:border-champagne-400 transition-colors"
+            style="border-color:rgba(200,137,26,0.2);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+          </div>
+          <h3 class="text-primary mb-3" style="font-family:'Playfair Display',serif;font-size:1.2rem;">Bespoke Jewelry
+          </h3>
+          <p class="text-muted leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">
+            Commission a piece entirely your own — from initial sketch to final hallmarking, in your hands.</p>
+        </div>
+        <div class="svc-card p-6 group reveal d1">
+          <div
+            class="w-14 h-14 border flex items-center justify-center mb-5 group-hover:border-champagne-400 transition-colors"
+            style="border-color:rgba(200,137,26,0.2);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="7" />
+              <circle cx="12" cy="12" r="2" />
+              <line x1="12" y1="2" x2="12" y2="5" />
+              <line x1="12" y1="19" x2="12" y2="22" />
+              <path d="M15 2h-6v3h6z" />
+            </svg>
+          </div>
+          <h3 class="text-primary mb-3" style="font-family:'Playfair Display',serif;font-size:1.2rem;">Watch
+            Consultation</h3>
+          <p class="text-muted leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Our
+            horological advisors guide you through movement selection, case materials, and dial configurations.</p>
+        </div>
+        <div class="svc-card p-6 group reveal d2">
+          <div
+            class="w-14 h-14 border flex items-center justify-center mb-5 group-hover:border-champagne-400 transition-colors"
+            style="border-color:rgba(200,137,26,0.2);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 2 17 12 22 22 17 22 7 12 2" />
+              <line x1="12" y1="2" x2="12" y2="22" />
+              <line x1="2" y1="7" x2="22" y2="7" />
+              <line x1="2" y1="17" x2="22" y2="17" />
+            </svg>
+          </div>
+          <h3 class="text-primary mb-3" style="font-family:'Playfair Display',serif;font-size:1.2rem;">Collection
+            Reservation</h3>
+          <p class="text-muted leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Secure
+            access to limited releases before they are unveiled to the public.</p>
+        </div>
+        <div class="svc-card p-6 group reveal d3">
+          <div
+            class="w-14 h-14 border flex items-center justify-center mb-5 group-hover:border-champagne-400 transition-colors"
+            style="border-color:rgba(200,137,26,0.2);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+              <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+            </svg>
+          </div>
+          <h3 class="text-primary mb-3" style="font-family:'Playfair Display',serif;font-size:1.2rem;">Custom Engraving
+          </h3>
+          <p class="text-muted leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Add a
+            personal inscription, date, or crest — hand-engraved by our master artisan on any piece.</p>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center reveal">
+        <div class="gold-line w-24 mx-auto mb-8"></div>
+        <p class="text-secondary italic mb-8 max-w-xl mx-auto"
+          style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;">"Every client of Icon is invited not merely
+          to purchase, but to belong."</p>
+        <a href="mailto:private@icon.com" class="btn-gold"><span>Request a Private Consultation</span></a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ SECTION 09 — HERITAGE & BRAND STORY -->
+  <section id="heritage" class="py-24 md:py-32 bg-dark-c overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <!-- Left -->
+        <div class="reveal-l">
+          <div class="overflow-hidden relative mb-8" style="aspect-ratio:3/4;background:#0a0a0d;">
+            <img src="https://images.pexels.com/photos/18451697/pexels-photo-18451697.jpeg" alt="Icon heritage"
+              class="w-full h-full object-cover transition-transform duration-[1.5s] hover:scale-105" />
+            <div class="absolute inset-0"
+              style="background:linear-gradient(to top,rgba(10,10,13,0.72),transparent 60%);"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <p style="font-family:'Playfair Display',serif;font-size:1.3rem;color:#faf7ef;font-style:italic;">
+                "Crafting time, one jewel at a time."</p>
+              <span class="lbl mt-1 block" style="color:var(--gold-light);font-size:0.58rem;">Icon, Geneva
+                Atelier</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-px" style="background:rgba(200,137,26,0.08);">
+            <div class="p-5 text-center bg-dark-c">
+              <p class="gold-text mb-1" style="font-family:'Playfair Display',serif;font-size:1.8rem;">39</p><span
+                class="lbl text-muted" style="font-size:0.58rem;">Years</span>
+            </div>
+            <div class="p-5 text-center bg-dark-c">
+              <p class="gold-text mb-1" style="font-family:'Playfair Display',serif;font-size:1.8rem;">847</p><span
+                class="lbl text-muted" style="font-size:0.58rem;">Pieces</span>
+            </div>
+            <div class="p-5 text-center bg-dark-c">
+              <p class="gold-text mb-1" style="font-family:'Playfair Display',serif;font-size:1.8rem;">41</p><span
+                class="lbl text-muted" style="font-size:0.58rem;">Countries</span>
+            </div>
+          </div>
+        </div>
+        <!-- Right -->
+        <div class="space-y-10">
+          <div class="reveal">
+            <span class="lbl mb-5 block" style="color:var(--gold);">09 — Heritage &amp; Brand Story</span>
+            <h2 class="text-primary leading-tight mb-6"
+              style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);">Icon Born of <em
+                class="italic">Conviction.</em></h2>
+            <p class="text-secondary leading-relaxed mb-4"
+              style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;">Icon was founded in 1987 by master
+              jeweller Henri Icon, in a small atelier on the rue du Rhône, Geneva. His belief was elemental: that a
+              truly beautiful object transcends fashion, politics, and time itself.</p>
+            <p class="text-muted leading-relaxed" style="font-family:'Cormorant Garamond',serif;font-size:1rem;">Today,
+              Icon remains privately held and family-operated, guided by the same principles Henri inscribed above the
+              atelier door: <em>"Patience. Precision. Permanence."</em></p>
+          </div>
+          <!-- Timeline -->
+          <div class="reveal d2">
+            <h3 class="lbl mb-6" style="color:var(--gold);font-size:0.6rem;">Heritage Timeline</h3>
+            <div class="space-y-0 border-l" style="border-color:rgba(200,137,26,0.2);">
+              <div class="tl-item pb-7 group cursor-default"><span
+                  class="text-primary group-hover:text-champagne-300 transition-colors"
+                  style="font-family:'Playfair Display',serif;font-size:1.2rem;">1987</span>
+                <p class="text-muted mt-1" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">Henri Icon
+                  opens the first atelier. The first collection of three rings sells within days.</p>
+              </div>
+              <div class="tl-item pb-7 group cursor-default"><span
+                  class="text-primary group-hover:text-champagne-300 transition-colors"
+                  style="font-family:'Playfair Display',serif;font-size:1.2rem;">1998</span>
+                <p class="text-muted mt-1" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">The first
+                  Signature Collection — twelve jewels, twelve timepieces — selling entirely through private referral.
+                </p>
+              </div>
+              <div class="tl-item pb-7 group cursor-default"><span
+                  class="text-primary group-hover:text-champagne-300 transition-colors"
+                  style="font-family:'Playfair Display',serif;font-size:1.2rem;">2010</span>
+                <p class="text-muted mt-1" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">
+                  International Atelier opens in Milan and Dubai. Icon now spans three continents.</p>
+              </div>
+              <div class="tl-item pb-7 group cursor-default"><span
+                  class="text-primary group-hover:text-champagne-300 transition-colors"
+                  style="font-family:'Playfair Display',serif;font-size:1.2rem;">2021</span>
+                <p class="text-muted mt-1" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">Modern
+                  Heritage Collection debuts — bridging classical DNA with contemporary material innovation.</p>
+              </div>
+              <div class="tl-item group cursor-default"><span
+                  class="gold-text group-hover:opacity-80 transition-opacity"
+                  style="font-family:'Playfair Display',serif;font-size:1.2rem;">2026</span>
+                <p class="text-muted mt-1" style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;">A New Era of
+                  Fine Time &amp; Jewelry — the most ambitious chapter begins today.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SECTION 10 — FINAL CTA + FOOTER -->
+  <section id="final-cta" class="relative flex items-center overflow-hidden" style="min-height:70vh;">
+    <div class="absolute inset-0">
+      <img src="https://images.pexels.com/photos/15728016/pexels-photo-15728016.jpeg" alt="Icon closing"
+        class="w-full h-full object-cover" style="filter:brightness(0.3) saturate(0.6);" />
+      <div class="absolute inset-0"
+        style="background:linear-gradient(to top,rgba(10,10,13,0.98) 0%,rgba(10,10,13,0.4) 60%,transparent 100%);">
+      </div>
+    </div>
+    <div class="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-24 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="reveal">
+          <span class="lbl mb-6 block" style="color:var(--gold);">10 — Icon</span>
+          <h2
+            style="font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,5.5rem);color:#faf7ef;line-height:0.9;margin-bottom:1.5rem;">
+            Made to Be <em class="italic gold-text">Remembered.</em></h2>
+          <p class="mx-auto"
+            style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:rgba(250,247,239,0.55);margin-bottom:2.5rem;max-width:28rem;line-height:1.7;">
+            Some possessions are kept. Others are passed down. Choose pieces that will outlive the moment and become
+            part of your story.</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#collection" class="btn-gold"><span>Explore Collection</span></a>
+            <a href="#private-client" class="btn-ghost">Request Private Viewing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SECTION 08 — PORTFOLIO / CAMPAIGN GALLERY -->
+  <section id="portfolio" class="py-24 md:py-32 bg-dark-a overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
+        <div class="reveal">
+          <span class="lbl mb-4 block" style="color:var(--gold);">08 — Portfolio &amp; Campaign</span>
+          <h2 class="text-primary leading-tight"
+            style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);">The Visual <em
+              class="italic">Archive</em></h2>
+        </div>
+        <div class="reveal d1 flex flex-wrap gap-2" id="portfolio-filters">
+          <button class="filter-btn active text-primary" data-pf="all">All</button>
+          <button class="filter-btn text-primary" data-pf="watches">Watches</button>
+          <button class="filter-btn text-primary" data-pf="jewelry">Jewelry</button>
+          <button class="filter-btn text-primary" data-pf="craft">Craftsmanship</button>
+          <button class="filter-btn text-primary" data-pf="heritage">Heritage</button>
+        </div>
+      </div>
+      <div class="gold-line mb-12 reveal"></div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3" id="portfolio-grid">
+        <div class="gal-item pf-item col-span-2 row-span-2 reveal" data-pc="watches"
+          style="aspect-ratio:1/1;min-height:240px;background:#141418;">
+          <img src="images/hero_watch.jpg" alt="Aurelia Campaign" class="w-full h-full object-cover" />
+          <div class="gal-overlay"><span class="lbl mb-1 block"
+              style="color:var(--gold-light);font-size:0.58rem;">Watches</span>
+            <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#faf7ef;">Aurelia Chronograph</p>
+          </div>
+        </div>
+        <div class="gal-item pf-item reveal d1" data-pc="jewelry" style="aspect-ratio:1/1;background:#141418;">
+          <img src="images/diamond_ring.jpg" alt="Celeste" class="w-full h-full object-cover" />
+          <div class="gal-overlay"><span class="lbl mb-1 block"
+              style="color:var(--gold-light);font-size:0.58rem;">Jewelry</span>
+            <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#faf7ef;">Celeste Solitaire</p>
+          </div>
+        </div>
+        <div class="gal-item pf-item reveal d2" data-pc="jewelry" style="aspect-ratio:1/1;background:#141418;">
+          <img src="images/gold_necklace.jpg" alt="Nocturne" class="w-full h-full object-cover" />
+          <div class="gal-overlay"><span class="lbl mb-1 block"
+              style="color:var(--gold-light);font-size:0.58rem;">Jewelry</span>
+            <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#faf7ef;">Nocturne Pendant</p>
+          </div>
+        </div>
+        <div class="gal-item pf-item reveal d1" data-pc="watches" style="aspect-ratio:1/1;background:#141418;">
+          <img src="images/watch_chronograph.jpg" alt="Élan" class="w-full h-full object-cover" />
+          <div class="gal-overlay"><span class="lbl mb-1 block"
+              style="color:var(--gold-light);font-size:0.58rem;">Watches</span>
+            <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#faf7ef;">Élan Diamond</p>
+          </div>
+        </div>
+        <div class="gal-item pf-item reveal d2" data-pc="heritage" style="aspect-ratio:1/1;background:#141418;">
+          <img src="images/heritage_watch.jpg" alt="Imperial Heritage" class="w-full h-full object-cover object-top" />
+          <div class="gal-overlay"><span class="lbl mb-1 block"
+              style="color:var(--gold-light);font-size:0.58rem;">Heritage</span>
+            <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#faf7ef;">Imperial Heritage I</p>
+          </div>
+        </div>
+        <div class="gal-item pf-item reveal d3" data-pc="jewelry" style="aspect-ratio:1/1;background:#141418;">
+          <img src="images/pearl_bracelet.jpg" alt="Pearl Strand" class="w-full h-full object-cover" />
+          <div class="gal-overlay"><span class="lbl mb-1 block"
+              style="color:var(--gold-light);font-size:0.58rem;">Jewelry</span>
+            <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#faf7ef;">Pearl Strand</p>
+          </div>
+        </div>
+        <div class="gal-item pf-item reveal d1" data-pc="craft" style="aspect-ratio:1/1;background:#141418;">
+          <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80" alt="Craftsmanship"
+            class="w-full h-full object-cover" />
+          <div class="gal-overlay"><span class="lbl mb-1 block"
+              style="color:var(--gold-light);font-size:0.58rem;">Craftsmanship</span>
+            <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#faf7ef;">The Atelier</p>
+          </div>
+        </div>
+        <div class="gal-item pf-item col-span-2 reveal d2" data-pc="jewelry"
+          style="aspect-ratio:2/1;min-height:180px;background:#141418;">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=900&q=80" alt="Diamond Collection"
+            class="w-full h-full object-cover" />
+          <div class="gal-overlay"><span class="lbl mb-1 block"
+              style="color:var(--gold-light);font-size:0.58rem;">Jewelry</span>
+            <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#faf7ef;">Diamond Collection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-bg" style="padding:5rem 0 3rem; transition:background-color 0.4s ease;">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+        <!-- Brand -->
+        <div class="lg:col-span-2">
+          <div class="mb-5 flex items-center gap-3">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="#ecbf5f" stroke-width="1.2" opacity="0.6"/>
+              <circle cx="20" cy="20" r="14" stroke="#ecbf5f" stroke-width="0.8" opacity="0.3"/>
+              <path d="M16 12H24" stroke="#ecbf5f" stroke-width="1.5"/>
+              <path d="M20 12V28" stroke="#ecbf5f" stroke-width="1.5"/>
+              <path d="M16 28H24" stroke="#ecbf5f" stroke-width="1.5"/>
+              <path d="M20 5L22 7L20 9L18 7L20 5Z" fill="#ecbf5f"/>
+            </svg>
+            <div>
+              <span
+                style="font-family:'Playfair Display',serif;font-size:1.8rem;letter-spacing:0.15em;color:#ecbf5f;display:block;line-height:1;">ICON</span>
+              <div class="gold-line mt-2 w-full"></div>
+            </div>
+          </div>
+          <p class="footer-text"
+            style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;line-height:1.7;max-width:260px;margin-bottom:1.5rem;">
+            Fine Jewelry &amp; Luxury Watches. Crafted with patience, precision, and permanence since 1987. Geneva ·
+            Milan · Dubai.</p>
+          <!-- Newsletter -->
+          <p class="lbl mb-3" style="color:rgba(200,137,26,0.6);font-size:0.6rem;">Private Access Newsletter</p>
+          <div class="flex gap-2 mb-5">
+            <input id="nl-email" type="email" placeholder="Your email address" class="nl-input flex-1" />
+            <button id="nl-submit"
+              style="font-family:'Montserrat',sans-serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 0.9rem;border:1px solid rgba(200,137,26,0.35);color:var(--gold);background:transparent;cursor:pointer;transition:all 0.3s;white-space:nowrap;"
+              onmouseover="this.style.background='#c8891a';this.style.color='#0a0a0d';"
+              onmouseout="this.style.background='transparent';this.style.color='#c8891a';">Subscribe</button>
+          </div>
+          <!-- Social -->
+          <div class="flex items-center gap-4">
+            <a href="#" aria-label="Instagram" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+              </svg>
+            </a>
+            <a href="#" aria-label="TikTok" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" />
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- Collection -->
+        <div>
+          <h4 class="lbl mb-5" style="color:rgba(200,137,26,0.6);font-size:0.6rem;">Collection</h4>
+          <ul class="space-y-3">
+            <li><a href="#collection" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Signature Collection</a></li>
+            <li><a href="#watches" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Luxury Watches</a></li>
+            <li><a href="#jewelry" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Fine Jewelry</a></li>
+            <li><a href="#signature" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Signature Pieces</a></li>
+            <li><a href="#private-client" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Limited Editions</a></li>
+          </ul>
+        </div>
+        <!-- Icon -->
+        <div>
+          <h4 class="lbl mb-5" style="color:rgba(200,137,26,0.6);font-size:0.6rem;">Icon</h4>
+          <ul class="space-y-3">
+            <li><a href="#heritage" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Our Heritage</a></li>
+            <li><a href="#craftsmanship" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Craftsmanship</a></li>
+            <li><a href="#portfolio" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Portfolio</a></li>
+            <li><a href="#" class="footer-link" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Press
+                &amp; Editorials</a></li>
+            <li><a href="#" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Sustainability</a></li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div>
+          <h4 class="lbl mb-5" style="color:rgba(200,137,26,0.6);font-size:0.6rem;">Contact</h4>
+          <ul class="space-y-3">
+            <li><a href="#private-client" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Private Client</a></li>
+            <li><a href="mailto:private@icon.com" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">private@icon.com</a></li>
+            <li><a href="tel:+41221234567" class="footer-link"
+                style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">+41 22 123 45 67</a></li>
+            <li><span class="footer-text-dim" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">Rue du
+                Rhône 48</span></li>
+            <li><span class="footer-text-dim" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;">1204
+                Geneva, Switzerland</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gold-line mb-7"></div>
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <p class="footer-text-dim" style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;">© 2026 Icon. All
+          rights reserved. Crafted with precision.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="lbl footer-link" style="font-size:0.58rem;">Privacy Policy</a>
+          <a href="#" class="lbl footer-link" style="font-size:0.58rem;">Terms &amp; Conditions</a>
+          <a href="#" class="lbl footer-link" style="font-size:0.58rem;">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="btt" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8891a" stroke-width="1.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5" />
+      <polyline points="5 12 12 5 19 12" />
+      <line x1="10" y1="3" x2="14" y2="3" />
+    </svg>
+  </button>
+
+  <!-- ============================================================ JAVASCRIPT -->
+  <script>
+    // ---- THEME ----
+    const body = document.getElementById('body-root');
+    const themeBtn = document.getElementById('theme-toggle');
+    const iSun = document.getElementById('icon-sun');
+    const iMoon = document.getElementById('icon-moon');
+
+    function applyTheme(t) {
+      if (t === 'light') {
+        body.classList.remove('dark'); body.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        iSun.classList.add('hidden'); iMoon.classList.remove('hidden');
+      } else {
+        body.classList.remove('light'); body.classList.add('dark');
+        document.documentElement.classList.add('dark');
+        iSun.classList.remove('hidden'); iMoon.classList.add('hidden');
+      }
+      localStorage.setItem('ma-theme', t);
+    }
+
+    applyTheme(localStorage.getItem('ma-theme') || 'dark');
+
+    themeBtn.addEventListener('click', () => {
+      applyTheme(body.classList.contains('dark') ? 'light' : 'dark');
+      setTimeout(updateNavScroll, 50);
+    });
+
+    // ---- NAVBAR SCROLL ----
+    const nav = document.getElementById('navbar');
+    function updateNavScroll() {
+      window.scrollY > 60 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', updateNavScroll, { passive: true });
+    updateNavScroll();
+
+    // ---- ACTIVE NAV STATE ----
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link, .mob-link');
+
+    function updateActiveLink() {
+      let current = '';
+      const scrollY = window.scrollY;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      // Special case mapping the final CTA section to the private client nav link
+      if (current === 'final-cta') {
+        current = 'private-client';
+      }
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    updateActiveLink();
+
+    // ---- MOBILE MENU ----
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const mobMenu = document.getElementById('mobile-menu');
+    const mobLinks = document.querySelectorAll('.mob-link');
+
+    const openMenu = () => { mobMenu.classList.replace('closed', 'open'); document.body.style.overflow = 'hidden'; };
+    const closeMenu = () => { mobMenu.classList.replace('open', 'closed'); document.body.style.overflow = ''; };
+
+    menuToggle.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    mobLinks.forEach(l => l.addEventListener('click', closeMenu));
+
+    // ---- HERO PARALLAX ----
+    const heroImg = document.getElementById('hero-img');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          heroImg.style.transform = `translateY(${window.pageYOffset * 0.22}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // ---- SCROLL REVEAL ----
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-s').forEach(el => observer.observe(el));
+
+    // ---- BACK TO TOP ----
+    const btt = document.getElementById('btt');
+    window.addEventListener('scroll', () => { window.scrollY > 400 ? btt.classList.add('vis') : btt.classList.remove('vis'); }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ---- WATCH SPEC TABS ----
+    document.querySelectorAll('.spec-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.spec-tab').forEach(t => { t.classList.remove('active'); t.classList.add('text-muted'); });
+        document.querySelectorAll('.spec-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active'); tab.classList.remove('text-muted');
+        const p = document.getElementById('panel-' + tab.getAttribute('data-tab'));
+        if (p) p.classList.add('active');
+      });
+    });
+
+    // ---- 360 EXPLORE ----
+    document.getElementById('explore-360').addEventListener('click', () => {
+      document.getElementById('detail-360').classList.toggle('hidden');
+    });
+
+    // ---- JEWELRY FILTER ----
+    document.querySelectorAll('[data-jf]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-jf]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.getAttribute('data-jf');
+        document.querySelectorAll('[data-jcat]').forEach(item => {
+          const cat = item.getAttribute('data-jcat');
+          item.style.display = (f === 'all' || cat === f) ? '' : 'none';
+        });
+      });
+    });
+
+    // ---- PORTFOLIO FILTER ----
+    document.querySelectorAll('[data-pf]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-pf]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.getAttribute('data-pf');
+        document.querySelectorAll('[data-pc]').forEach(item => {
+          const cat = item.getAttribute('data-pc');
+          if (f === 'all' || cat === f) {
+            item.style.opacity = '1'; item.style.transform = 'scale(1)'; item.style.pointerEvents = 'auto'; item.style.display = '';
+          } else {
+            item.style.opacity = '0.12'; item.style.transform = 'scale(0.97)'; item.style.pointerEvents = 'none';
+          }
+        });
+      });
+    });
+
+    // ---- NEWSLETTER ----
+    document.getElementById('nl-submit').addEventListener('click', () => {
+      const input = document.getElementById('nl-email');
+      if (input.value && input.value.includes('@')) {
+        input.value = '';
+        input.placeholder = 'Thank you for subscribing.';
+        setTimeout(() => { input.placeholder = 'Your email address'; }, 3000);
+      }
+    });
+  </script>
+</body>
+
+</html>
